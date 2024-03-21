@@ -7,6 +7,7 @@ import { DatabaseModule, RmqModule } from '@app/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Order, OrderSchema } from './schemas/order.schema';
 import { BILLING_SERVICE } from './constants/services';
+import { OrdersRepository } from './orders.repository';
 
 @Module({
   imports: [
@@ -25,6 +26,6 @@ import { BILLING_SERVICE } from './constants/services';
     }),
   ],
   controllers: [OrdersController],
-  providers: [OrdersService],
+  providers: [OrdersService, OrdersRepository],
 })
 export class OrdersModule {}

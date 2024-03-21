@@ -4,7 +4,7 @@ import { CreateOrderRequest } from './dto/create-order-request';
 
 @Controller('orders')
 export class OrdersController {
-  constructor(private readonly ordersService: OrdersService) {}
+  constructor(private readonly ordersService: OrdersService) { }
 
   @Post()
   async createOrder(@Body() request: CreateOrderRequest, @Req() req: any) {
