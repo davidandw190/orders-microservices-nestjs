@@ -4,8 +4,10 @@ import { MessagePattern } from '@nestjs/microservices';
 import { JwtAuthGuard } from '@app/common/auth/jwt.auth.guard';
 import { User } from './users/schemas/user.schema';
 import { Response } from 'express';
+import { LocalAuthGuard } from './guards/local-auth.guard';
 
 
+@UseGuards(LocalAuthGuard)
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
