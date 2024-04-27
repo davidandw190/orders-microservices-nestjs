@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
+import * as Joi from 'joi';
+
+import { AuthModule, RmqModule } from '@app/common';
+
 import { BillingController } from './billing.controller';
 import { BillingService } from './billing.service';
-import * as Joi  from 'joi'
 import { ConfigModule } from '@nestjs/config';
-import { RmqModule } from '@app/common';
-import { AuthModule } from 'apps/auth/src/auth.module';
+import { Module } from '@nestjs/common';
 
 @Module({
   imports: [

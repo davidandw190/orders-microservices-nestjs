@@ -1,13 +1,15 @@
-import { Module } from '@nestjs/common';
+import * as Joi from 'joi';
+
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { DatabaseModule, RmqModule } from '@app/common';
+
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtModule } from '@nestjs/jwt';
-import * as Joi from 'joi';
-import { DatabaseModule, RmqModule } from '@app/common';
-import { UsersModule } from './users/users.module';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
+import { Module } from '@nestjs/common';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [

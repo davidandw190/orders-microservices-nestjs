@@ -1,6 +1,6 @@
+import { ConfigService } from '@nestjs/config';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
 import { Response } from 'express';
 import { User } from './users/schemas/user.schema';
 
@@ -14,7 +14,6 @@ export class AuthService {
     private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
   ) {}
-
 
   async login(user: User, response: Response) {
     const tokenPayload: TokenPayload = {
@@ -40,5 +39,4 @@ export class AuthService {
       expires: new Date(),
     });
   }
-
 }
