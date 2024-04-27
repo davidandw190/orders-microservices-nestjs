@@ -23,15 +23,13 @@ import { UsersModule } from './users/users.module';
         JWT_EXPIRATION: Joi.string().required(),
         MONGODB_URI: Joi.string().required(),
       }),
-      envFilePath: './apps/auth/.env'
+      envFilePath: './apps/auth/.env',
     }),
     JwtModule.registerAsync({
-      
       useFactory: (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),
         signOptions: {
-          expiresIn: `${configService.get('JWT_SECRET')}s`,
-
+          expiresIn: `${configService.get('JWT_EXPIRATION')}s`,
         },
       }),
       inject: [ConfigService],
