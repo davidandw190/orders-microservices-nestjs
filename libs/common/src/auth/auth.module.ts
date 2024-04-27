@@ -1,7 +1,9 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
-import { RmqModule } from '../rmq/rmq.module';
+
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+
 import { AUTH_SERVICE } from './services';
+import { RmqModule } from '../rmq/rmq.module';
 
 @Module({
   imports: [RmqModule.register({ name: AUTH_SERVICE })],

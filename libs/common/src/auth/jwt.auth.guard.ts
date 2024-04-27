@@ -1,9 +1,9 @@
 import {
-    CanActivate,
-    ExecutionContext,
-    Inject,
-    Injectable,
-    UnauthorizedException,
+  CanActivate,
+  ExecutionContext,
+  Inject,
+  Injectable,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { catchError, Observable, tap } from 'rxjs';
@@ -12,6 +12,7 @@ import { AUTH_SERVICE } from './services';
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
   constructor(@Inject(AUTH_SERVICE) private authClient: ClientProxy) {}
+
   canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
