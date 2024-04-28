@@ -42,7 +42,7 @@ lerna-debug.log*
 .env.production.local
 .env.local
 
-mongo-secret.env
+mongo-db-secrets.env
 
 # temp directory
 .temp
