@@ -1,29 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: orders
+  name: auth
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: orders
+      app: auth
   template:
     metadata:
       labels:
-        app: orders
+        app: auth
     spec:
       containers:
-        - name: orders
-          image: davidandw190/ordering-app_orders:v1
+        - name: auth
+          image: davidandw190/ordering-app_auth:v1
           ports:
-            - containerPort: 3000
+            - containerPort: 3001
           env:
             - name: PORT
-              value: '3000'
+              value: '3001'
             - name: RABBIT_MQ_BILLING_QUEUE
               value: billing
             - name: RABBIT_MQ_AUTH_QUEUE
               value: auth
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                name: {{ .Release.Name }}-{{ .Chart.Name }}-auth-secrets
+                key: jwt-secret
+            - name: JWT_EXPIRATION
+              valueFrom:
+                secretKeyRef:
+                name: {{ .Release.Name }}-{{ .Chart.Name }}-auth-secrets
+                key: jwt-expiration
             - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
@@ -34,4 +44,3 @@ spec:
                 secretKeyRef:
                   name: {{ .Release.Name }}-{{ .Chart.Name }}-orders-secrets
                   key: rabbitmq-uri
-                  
