@@ -1,0 +1,10 @@
+# orders-app/hooks/pre-install.yaml
+- name: create-secrets
+  manifest: |-
+    {{- if .Files.Exists "templates/orders/secrets/secrets.yaml" }}
+    {{ .Files.Get "templates/orders/secrets/secrets.yaml" | nindent 2 }}
+    {{- end }}
+
+    {{- if .Files.Exists "templates/auth/secrets/secrets.yaml" }}
+    {{ .Files.Get "templates/auth/secrets/secrets.yaml" | nindent 2 }}
+    {{- end }}

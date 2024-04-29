@@ -27,11 +27,10 @@ spec:
             - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-{{ .Chart.Name }}-orders-secrets
+                  name: orders-secrets
                   key: mongodb-uri
             - name: RABBIT_MQ_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-{{ .Chart.Name }}-orders-secrets
+                  name: orders-secrets
                   key: rabbitmq-uri
-                  

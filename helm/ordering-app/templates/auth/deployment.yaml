@@ -27,20 +27,20 @@ spec:
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
-                name: {{ .Release.Name }}-{{ .Chart.Name }}-auth-secrets
-                key: jwt-secret
+                  name: auth-secrets
+                  key: jwt-secret
             - name: JWT_EXPIRATION
               valueFrom:
                 secretKeyRef:
-                name: {{ .Release.Name }}-{{ .Chart.Name }}-auth-secrets
-                key: jwt-expiration
+                  name: auth-secrets
+                  key: jwt-expiration
             - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-{{ .Chart.Name }}-orders-secrets
+                  name: orders-secrets
                   key: mongodb-uri
             - name: RABBIT_MQ_URI
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Name }}-{{ .Chart.Name }}-orders-secrets
+                  name: orders-secrets
                   key: rabbitmq-uri
