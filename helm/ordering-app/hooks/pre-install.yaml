@@ -5,6 +5,10 @@
     {{ .Files.Get "templates/orders/secrets/secrets.yaml" | nindent 2 }}
     {{- end }}
 
+    {{- if .Files.Exists "templates/billing/secrets/secrets.yaml" }}
+    {{ .Files.Get "templates/billing/secrets/secrets.yaml" | nindent 2 }}
+    {{- end }}
+
     {{- if .Files.Exists "templates/auth/secrets/secrets.yaml" }}
     {{ .Files.Get "templates/auth/secrets/secrets.yaml" | nindent 2 }}
     {{- end }}
